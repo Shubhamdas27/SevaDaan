@@ -1,0 +1,110 @@
+{
+  "apiTests": [
+    {
+      "endpoint": "/../../health",
+      "description": "Backend Health Check",
+      "status": 200,
+      "success": true,
+      "dataLength": 0,
+      "responseTime": 1752492051242
+    },
+    {
+      "endpoint": "/ngos",
+      "description": "NGOs List API",
+      "status": 200,
+      "success": true,
+      "dataLength": 10,
+      "responseTime": 1752492051550
+    },
+    {
+      "endpoint": "/programs",
+      "description": "Programs List API",
+      "status": 200,
+      "success": true,
+      "dataLength": 12,
+      "responseTime": 1752492051772
+    },
+    {
+      "endpoint": "/volunteer-opportunities/opportunities",
+      "description": "Volunteer Opportunities API",
+      "status": 200,
+      "success": true,
+      "dataLength": 20,
+      "responseTime": 1752492051962
+    },
+    {
+      "endpoint": "/ngos?limit=5",
+      "description": "NGOs with Limit Parameter",
+      "status": 200,
+      "success": true,
+      "dataLength": 5,
+      "responseTime": 1752492052140
+    },
+    {
+      "endpoint": "/programs?limit=3",
+      "description": "Programs with Limit Parameter",
+      "status": 200,
+      "success": true,
+      "dataLength": 3,
+      "responseTime": 1752492052330
+    },
+    {
+      "endpoint": "/volunteer-opportunities/opportunities?limit=2",
+      "description": "Volunteer Opportunities with Limit",
+      "status": 200,
+      "success": true,
+      "dataLength": 2,
+      "responseTime": 1752492052495
+    },
+    {
+      "endpoint": "/testimonials",
+      "description": "Testimonials API",
+      "status": 200,
+      "success": true,
+      "dataLength": 0,
+      "responseTime": 1752492052591
+    }
+  ],
+  "frontendTests": [
+    {
+      "route": "/",
+      "description": "Home Page",
+      "status": 200,
+      "success": true,
+      "contentLength": 1074
+    },
+    {
+      "route": "/ngos",
+      "description": "NGOs Page",
+      "status": 200,
+      "success": true,
+      "contentLength": 1074
+    },
+    {
+      "route": "/programs",
+      "description": "Programs Page",
+      "status": 200,
+      "success": true,
+      "contentLength": 1074
+    },
+    {
+      "route": "/volunteer",
+      "description": "Volunteer Page",
+      "status": 200,
+      "success": true,
+      "contentLength": 1074
+    },
+    {
+      "route": "/emergency-help",
+      "description": "Emergency Help Page",
+      "status": 200,
+      "success": true,
+      "contentLength": 1074
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  }
+}
