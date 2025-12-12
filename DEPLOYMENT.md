@@ -1,6 +1,7 @@
 # SevaDaan - Vercel Deployment Guide
 
 ## 📋 Prerequisites
+
 - GitHub account
 - Vercel account (free)
 - MongoDB Atlas already configured ✅
@@ -40,6 +41,7 @@ git push -u origin main
 2. Click "Add New" → "Project"
 3. Import your GitHub repository
 4. Configure:
+
    - **Framework Preset**: Other
    - **Root Directory**: `Backend`
    - **Build Command**: `npm run build`
@@ -47,6 +49,7 @@ git push -u origin main
    - **Install Command**: `npm install`
 
 5. **Add Environment Variables**:
+
    ```
    NODE_ENV=production
    PORT=3000
@@ -92,31 +95,36 @@ vercel --prod
 ### Step 3: Deploy Frontend to Vercel
 
 1. **Update Frontend .env.production**:
+
    ```
    VITE_API_URL=https://YOUR-BACKEND-URL.vercel.app
    ```
 
 2. **Via Vercel Dashboard**:
+
    - Click "Add New" → "Project"
    - Import same GitHub repository
    - Configure:
+
      - **Framework Preset**: Vite
      - **Root Directory**: `Frontend`
      - **Build Command**: `npm run build`
      - **Output Directory**: `dist`
      - **Install Command**: `npm install`
-   
+
    - **Add Environment Variables**:
+
      ```
      VITE_API_URL=https://your-backend.vercel.app
      ```
-   
+
    - Click "Deploy"
 
 3. **Via CLI**:
+
    ```powershell
    cd D:\Sevadaan\Frontend
-   
+
    # Create .env.production with backend URL
    # Then deploy
    vercel --prod
@@ -129,17 +137,20 @@ After deployment, update Backend CORS configuration:
 **File**: `Backend/src/index.ts` or `Backend/src/app.ts`
 
 ```typescript
-app.use(cors({
-  origin: [
-    'http://localhost:5174',
-    'https://your-frontend.vercel.app',
-    'https://*.vercel.app' // Allow Vercel preview deployments
-  ],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5174",
+      "https://your-frontend.vercel.app",
+      "https://*.vercel.app", // Allow Vercel preview deployments
+    ],
+    credentials: true,
+  })
+);
 ```
 
 Push changes and redeploy:
+
 ```powershell
 git add .
 git commit -m "Update CORS for production"
@@ -160,11 +171,13 @@ Vercel will auto-deploy on push!
 ### Backend Issues
 
 **Check Vercel Logs**:
+
 ```powershell
 vercel logs https://your-backend.vercel.app
 ```
 
 **Common Issues**:
+
 - ❌ Module not found: Check `package.json` dependencies
 - ❌ MongoDB connection failed: Verify MONGODB_URI env variable
 - ❌ Serverless function timeout: Backend routes must respond in <10s
@@ -174,6 +187,7 @@ vercel logs https://your-backend.vercel.app
 **Check Build Logs in Vercel Dashboard**
 
 **Common Issues**:
+
 - ❌ API calls failing: Check VITE_API_URL in env variables
 - ❌ CORS errors: Update backend CORS configuration
 - ❌ 404 on refresh: Vercel should auto-handle SPA routing
@@ -181,6 +195,7 @@ vercel logs https://your-backend.vercel.app
 ## 📝 Environment Variables Summary
 
 ### Backend Environment Variables
+
 ```
 NODE_ENV=production
 MONGODB_URI=mongodb+srv://anushkajain:anushka123@sevadaan.4zuhxtc.mongodb.net/sevadaan
@@ -190,6 +205,7 @@ PORT=3000
 ```
 
 ### Frontend Environment Variables
+
 ```
 VITE_API_URL=https://your-backend.vercel.app
 ```
@@ -203,12 +219,14 @@ VITE_API_URL=https://your-backend.vercel.app
 ## 🔄 Automatic Deployments
 
 Vercel automatically deploys when you push to GitHub:
+
 - `main` branch → Production
 - Other branches → Preview deployments
 
 ## 💰 Cost
 
 **FREE** tier includes:
+
 - Unlimited deployments
 - 100 GB bandwidth/month
 - Automatic HTTPS
