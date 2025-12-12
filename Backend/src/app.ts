@@ -121,7 +121,13 @@ app.use(helmet({
 
 // CORS configuration
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'], // Allow frontend and backend origins
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:5174', 
+    'http://localhost:3000',
+    'https://frontend-32yysvoj1-subhdas272004-gmailcoms-projects.vercel.app',
+    /^https:\/\/.*\.vercel\.app$/  // Allow all Vercel preview deployments
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
