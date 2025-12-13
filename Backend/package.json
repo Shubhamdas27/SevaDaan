@@ -6,10 +6,9 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
-    "build": "tsc",
+    "build": "tsc --skipLibCheck",
     "build:watch": "tsc -w",
     "clean": "rimraf dist",
-    "prebuild": "npm run clean",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint . --ext .ts",
@@ -105,5 +104,9 @@
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8",
+    "utf-8-validate": "^6.0.4"
   }
 }

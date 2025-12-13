@@ -125,6 +125,7 @@ const corsOptions = {
     'http://localhost:5173', 
     'http://localhost:5174', 
     'http://localhost:3000',
+    'https://sevadaan-teal.vercel.app',
     'https://frontend-32yysvoj1-subhdas272004-gmailcoms-projects.vercel.app',
     /^https:\/\/.*\.vercel\.app$/  // Allow all Vercel preview deployments
   ],
@@ -219,6 +220,22 @@ app.get('/health', (req, res) => {
     environment: config.nodeEnv,
     version: process.env.npm_package_version || '1.0.0',
     database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
+  });
+});
+
+// Root route handler
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'SevaDaan Backend API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      api: '/api/v1',
+      docs: '/api/v1/docs'
+    },
+    timestamp: new Date().toISOString()
   });
 });
 
